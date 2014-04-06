@@ -10,6 +10,7 @@ install:
 
 kibana:
 	yum -y install nginx
+	chkconfig nginx on
 	patch /etc/nginx/conf.d/default.conf < etc/nginx/conf.d/default.conf.patch
 	rm -f /usr/share/nginx/html/index.html
 	curl -O https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone5.tar.gz

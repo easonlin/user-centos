@@ -7,6 +7,8 @@ epel:
 	rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 curl:
 	yum install -y curl
+supervisor: pip 
+	pip install supervisor
 gae-env: python27
 	pip install virtualenv
 	virtualenv --no-site-packages --python=python2.7 gae-env 

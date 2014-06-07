@@ -1,0 +1,13 @@
+--- /etc/td-agent/td-agent.conf	2014-03-14 02:20:47.894102082 +0800
++++ etc/td-agent/td-agent.conf	2014-03-14 10:24:30.894047997 +0800
+@@ -61,10 +61,6 @@
+ ## read apache logs continuously and tags td.apache.access
+ <source>
+   type tail
+-  #format /^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*) +\S*)?" (?<status>[^ ]*) (?<size>[^ ]*)(?: "(?<referer>[^\"]*)" "(?<agent>[^\"]*)")?$/
+-  #format /^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] \"(?<method>\S+)(?: +(?<path>[^\"]*) +\S*)?\" (?<status [^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\"]*)\" \"(?<agent>[^\"]*)\") \"(?<foward>[^\"]*)\")$/
+-  #format /^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time1>[^\]]*)\] (?:"(?<method>\S+) (?<path>[^" ]*) \S*") (?<status>[^ ]*) (?<size>[^ ]*) (?:"(?<referer>[^\"]*)" "(?<agent>[^\"]*)") "(?<forwarded>[^\"]*)"/
+-  #format /^(?<remote>[^ ]*) - (?<user>[^ ]*) \[(?<time_local>[^\]]*)\] "(?<request>(?<method>\S+)(?: +(?<path>[^" ]*) +\S*)?)" (?<status>[^ ]*) (?<size>[^ ]*) "(?<referer>[^"]*" "(?<agent>[^"]*)") "(?<forwarded>[^"]*)"/
+   format /^(?<remote>[^ ]*) - (?<user>[^ ]*) \[(?<time_local>[^\]]*)\] "(?<request>(?<method>\S+)(?: +(?<path>[^" ]*) +\S*)?)" (?<status>[^ ]*) (?<size>[^ ]*) "(?<referer>[^"]*)" "(?<agent>[^"]*)" "(?<forwarded>[^"]*)"/
+   time_format %d/%b/%Y:%H:%M:%S %z
+   path /var/log/nginx/access.log
